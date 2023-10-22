@@ -6,11 +6,11 @@
     "permissions": ["storage", "webRequest", "webRequestBlocking", "<all_urls>"],
     "host_permissions": ["<all_urls>"],
     "background": {
-        "scripts": ["eventListeners.js"],
+        "scripts": ["fetchDataAndCalc.js"],
         "persistent": true
     },
     "browser_action": {
-        "default_popup": "popup.html"
+        "default_popup": "modal.html"
     }
   }
   
