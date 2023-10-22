@@ -65,14 +65,10 @@ function calcRemainingCheckIns(activitiesArray) {
     });
 
     const totalCheckIns = classDays * 3;
-    const totalCheckInsLostToEndWith25 = totalCheckIns * 0.25;
-    const remainingCheckInsToLoose = Math.floor(
+    const totalCheckInsLostToEndWith25 = totalCheckIns * 0.24;
+    const remainingCheckInsToMiss = Math.floor(
         totalCheckInsLostToEndWith25 - missedCheckIns
     );
 
-    console.log(
-        "Você ainda pode perder ",
-        remainingCheckInsToLoose,
-        " check-ins"
-    );
+    chrome.storage.local.set({ remainingCheckInsToMiss }, function () {});
 }
