@@ -1,3 +1,20 @@
+chrome.webRequest.onBeforeSendHeaders.addListener(
+    function (details) {
+        if (details.url.includes("userdata")) {
+            const isExtensionRequest = details.requestHeaders.some(
+                (header) =>
+                    header.name === "SentByExtension" && header.value === "true"
+            );
+
+            if (!isExtensionRequest) {
+                resendRequest(details.url, details.requestHeaders);
+            }
+        }
+    },
+    { urls: ["<all_urls>"] },
+    ["blocking", "requestHeaders"]
+);
+
 function resendRequest(url, headersArray) {
     let formattedHeaders = {};
     for (let header of headersArray) {
