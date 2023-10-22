@@ -3,14 +3,13 @@
     "name": "Adalove2",
     "version": "1.0",
     "description": "Uma extensão para auxiliar os estudantes do Inteli no controle de faltas.",
-    "permissions": ["storage", "webRequest", "webRequestBlocking", "<all_urls>"],
+    "permissions": ["storage", "webRequest", "<all_urls>"],
     "host_permissions": ["<all_urls>"],
     "background": {
-        "scripts": ["fetchDataAndCalc.js"],
-        "persistent": true
+        "service_worker": "fetchDataAndCalc.js",
+        "type": "module"
     },
-    "browser_action": {
+    "action": {
         "default_popup": "modal.html"
     }
-  }
-  
+}

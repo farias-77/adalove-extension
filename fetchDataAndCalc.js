@@ -12,7 +12,7 @@ chrome.webRequest.onBeforeSendHeaders.addListener(
         }
     },
     { urls: ["<all_urls>"] },
-    ["blocking", "requestHeaders"]
+    ["requestHeaders"]
 );
 
 function resendRequest(url, headersArray) {
