@@ -1,3 +1,24 @@
+function resendRequest(url, headersArray) {
+    let formattedHeaders = {};
+    for (let header of headersArray) {
+        formattedHeaders[header.name] = header.value;
+    }
+
+    formattedHeaders["SentByExtension"] = "true";
+
+    fetch(url, {
+        method: "GET",
+        headers: formattedHeaders,
+    })
+        .then((response) => response.json())
+        .then((data) => {
+            calcRemainingCheckIns(data.responseData.activities);
+        })
+        .catch((error) => {
+            //console.error("Error:", error);
+        });
+}
+
 function calcRemainingCheckIns(activitiesArray) {
     //attendance1
     //attendance2
